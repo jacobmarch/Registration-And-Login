@@ -27,10 +27,10 @@ int main(){
 
     int choice;
 
-    cout << "1: Register\n2: Login\nYour choice: "; cin >> choice;
-
+    cout << "1: Register\n2: Login\n3: Quit\nYour choice: "; cin >> choice;
+    string username, password;
     if (choice == 1){
-        string username, password;
+        
 
         cout << "Select a username: "; cin >> username;
         cout << "Select a password: "; cin >> password;
@@ -47,14 +47,32 @@ int main(){
 
         if (!status){
             cout << "No Account Found" << endl;
-            system("PAUSE");
-            return 0;
+            cout << endl;
+            main();
         }
         else {
             cout << "Login Successful" << endl;
-            system("PAUSE");
-            return 1;
+
+
+            string entry;
+            ofstream journal;
+            journal.open(username + ".txt");
+            cin >> entry;
+
+            journal << entry;
+            
+            
+            
+
+
         }
     }
+    else if (choice == 3){
+        system("PAUSE");
+        return 0;
+    }
+
+
+    return 0;
 
 }
